@@ -160,6 +160,18 @@ VITE_ENABLE_SIGNUP=false
 
 `.env.local` 不应提交到仓库；`.gitignore` 已忽略 `.env`、`.env.*` 和 `*.local`。
 
+部署到 GitHub Pages 时，GitHub Actions 不会自动读取本地 `.env.local`。需要在 GitHub 仓库 Settings -> Secrets and variables -> Actions -> Repository secrets 中添加同名 secrets：
+
+```text
+VITE_FIREBASE_API_KEY
+VITE_FIREBASE_AUTH_DOMAIN
+VITE_FIREBASE_PROJECT_ID
+VITE_FIREBASE_APP_ID
+VITE_ENABLE_SIGNUP
+```
+
+项目的 Pages workflow 会在构建时把这些 secrets 注入给 Vite。修改 secrets 后，需要重新运行部署 workflow，或推送一次新提交触发部署。
+
 Firebase Web config 不是 Admin 密钥，但 Firestore Security Rules 必须正确设置。推荐规则见 [docs/firebase-security-rules.md](docs/firebase-security-rules.md)，需要在 Firebase Console 中手动部署。如果没有正确规则，不能认为同步是安全的。
 
 个人自用部署建议把 Firestore Rules 改成 UID 白名单，只允许你的 Firebase Auth UID 访问自己的 `userStates/{uid}`。同一个人换新设备时，只需要登录同一个账号，仍然使用同一个 UID，不需要创建新 UID。
