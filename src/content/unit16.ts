@@ -1,0 +1,125 @@
+import type { Lesson } from "../types";
+import { jp, p, r } from "./text";
+
+export const unit16: Lesson = {
+  id: "unit-16",
+  unit: 16,
+  title: "て形入门",
+  subtitle: "连接动作，也为请求表达做准备",
+  description:
+    "学习常见动词て形的基础样子，用て形连接简单动作，并复习「てください」的前置基础。",
+  duration: "约 55 分钟",
+  accent: "#6f9fb8",
+  goals: [
+    "认识常见动词的て形",
+    "用て形连接两个简单动作",
+    "用「てください」提出礼貌请求",
+  ],
+  vocabulary: [
+    { id: "u16-w1", japanese: jp(r("書", "か", "写"), p("いて")), kana: "かいて", meaning: "写（て形）", partOfSpeech: "动词て形", example: jp(r("名前", "なまえ", "名字"), p("を"), r("書", "か", "写"), p("いてください。")), exampleMeaning: "请写名字。" },
+    { id: "u16-w2", japanese: jp(r("読", "よ", "读"), p("んで")), kana: "よんで", meaning: "读（て形）", partOfSpeech: "动词て形", example: jp(r("文", "ぶん", "句子"), p("を"), r("読", "よ", "读"), p("んでください。")), exampleMeaning: "请读句子。" },
+    { id: "u16-w3", japanese: jp(r("食", "た", "吃"), p("べて")), kana: "たべて", meaning: "吃（て形）", partOfSpeech: "动词て形", example: jp(p("パンを"), r("食", "た", "吃"), p("べて、"), r("水", "みず", "水"), p("を"), r("飲", "の", "喝"), p("みます。")), exampleMeaning: "吃面包，然后喝水。" },
+    { id: "u16-w4", japanese: jp(r("見", "み", "看"), p("て")), kana: "みて", meaning: "看（て形）", partOfSpeech: "动词て形", example: jp(r("写真", "しゃしん", "照片"), p("を"), r("見", "み", "看"), p("てください。")), exampleMeaning: "请看照片。" },
+    { id: "u16-w5", japanese: jp(r("行", "い", "去"), p("って")), kana: "いって", meaning: "去（て形）", partOfSpeech: "动词て形", example: jp(r("図書館", "としょかん", "图书馆"), p("へ"), r("行", "い", "去"), p("って、"), r("本", "ほん", "书"), p("を"), r("読", "よ", "读"), p("みます。")), exampleMeaning: "去图书馆，然后读书。" },
+    { id: "u16-w6", japanese: jp(r("来", "き", "来"), p("て")), kana: "きて", meaning: "来（て形）", partOfSpeech: "动词て形", example: jp(r("教室", "きょうしつ", "教室"), p("へ"), r("来", "き", "来"), p("てください。")), exampleMeaning: "请来教室。" },
+    { id: "u16-w7", japanese: "して", kana: "して", meaning: "做（て形）", partOfSpeech: "动词て形", example: jp(r("練習", "れんしゅう", "练习"), p("をしてください。")), exampleMeaning: "请做练习。" },
+    { id: "u16-w8", japanese: jp(r("待", "ま", "等"), p("って")), kana: "まって", meaning: "等（て形）", partOfSpeech: "动词て形", example: jp(r("少", "すこ", "少许"), p("し"), r("待", "ま", "等"), p("ってください。")), exampleMeaning: "请稍等。" },
+    { id: "u16-w9", japanese: jp(r("開", "あ", "打开"), p("けて")), kana: "あけて", meaning: "打开（て形）", partOfSpeech: "动词て形", example: jp(r("窓", "まど", "窗户"), p("を"), r("開", "あ", "打开"), p("けてください。")), exampleMeaning: "请打开窗户。" },
+    { id: "u16-w10", japanese: jp(r("閉", "し", "关闭"), p("めて")), kana: "しめて", meaning: "关闭（て形）", partOfSpeech: "动词て形", example: jp(r("窓", "まど", "窗户"), p("を"), r("閉", "し", "关闭"), p("めてください。")), exampleMeaning: "请关窗。" },
+    { id: "u16-w11", japanese: jp(r("名前", "なまえ", "名字")), kana: "なまえ", meaning: "名字", partOfSpeech: "名词", example: jp(r("名前", "なまえ", "名字"), p("を"), r("書", "か", "写"), p("いてください。")), exampleMeaning: "请写名字。" },
+    { id: "u16-w12", japanese: jp(r("文", "ぶん", "句子")), kana: "ぶん", meaning: "句子", partOfSpeech: "名词", example: jp(r("文", "ぶん", "句子"), p("を"), r("読", "よ", "读"), p("んでください。")), exampleMeaning: "请读句子。" },
+  ],
+  grammar: [
+    {
+      id: "u16-g1",
+      title: "て形是什么",
+      structure: jp(r("書", "か", "写"), p("きます → "), r("書", "か", "写"), p("いて")),
+      explanation: "て形是动词的一种连接形，可用于连接动作，也常出现在请求表达中。",
+      usage: "本课先记常见动词的て形，不急着总结所有变化规则。",
+      examples: [
+        { japanese: jp(r("名前", "なまえ", "名字"), p("を"), r("書", "か", "写"), p("いてください。")), meaning: "请写名字。" },
+        { japanese: jp(r("文", "ぶん", "句子"), p("を"), r("読", "よ", "读"), p("んでください。")), meaning: "请读句子。" },
+      ],
+    },
+    {
+      id: "u16-g2",
+      title: "连接动作",
+      structure: jp(r("食", "た", "吃"), p("べて、"), r("飲", "の", "喝"), p("みます")),
+      explanation: "用て形连接两个动作，表示“做了A，然后做B”。",
+      usage: "两个动作按时间顺序说，句子会更自然。",
+      examples: [
+        { japanese: jp(p("パンを"), r("食", "た", "吃"), p("べて、"), r("水", "みず", "水"), p("を"), r("飲", "の", "喝"), p("みます。")), meaning: "吃面包，然后喝水。" },
+        { japanese: jp(r("図書館", "としょかん", "图书馆"), p("へ"), r("行", "い", "去"), p("って、"), r("本", "ほん", "书"), p("を"), r("読", "よ", "读"), p("みます。")), meaning: "去图书馆，然后读书。" },
+      ],
+    },
+    {
+      id: "u16-g3",
+      title: "てください",
+      structure: jp(r("見", "み", "看"), p("てください")),
+      explanation: "「て形 + ください」可以礼貌地请求别人做某事。",
+      usage: "这和前面学过的请求表达连接起来，重点是先找出动词て形。",
+      examples: [
+        { japanese: jp(r("写真", "しゃしん", "照片"), p("を"), r("見", "み", "看"), p("てください。")), meaning: "请看照片。" },
+        { japanese: jp(r("少", "すこ", "少许"), p("し"), r("待", "ま", "等"), p("ってください。")), meaning: "请稍等。" },
+      ],
+    },
+  ],
+  examples: [
+    { japanese: jp(r("名前", "なまえ", "名字"), p("を"), r("書", "か", "写"), p("いてください。")), meaning: "请写名字。" },
+    { japanese: jp(r("文", "ぶん", "句子"), p("を"), r("読", "よ", "读"), p("んでください。")), meaning: "请读句子。" },
+    { japanese: jp(p("パンを"), r("食", "た", "吃"), p("べて、"), r("水", "みず", "水"), p("を"), r("飲", "の", "喝"), p("みます。")), meaning: "吃面包，然后喝水。" },
+    { japanese: jp(r("図書館", "としょかん", "图书馆"), p("へ"), r("行", "い", "去"), p("って、"), r("本", "ほん", "书"), p("を"), r("読", "よ", "读"), p("みます。")), meaning: "去图书馆，然后读书。" },
+    { japanese: jp(r("写真", "しゃしん", "照片"), p("を"), r("見", "み", "看"), p("てください。")), meaning: "请看照片。" },
+    { japanese: jp(r("少", "すこ", "少许"), p("し"), r("待", "ま", "等"), p("ってください。")), meaning: "请稍等。" },
+  ],
+  reading: {
+    title: "授業の前に",
+    intro: "老师在课前给学生几个简单指示。",
+    lines: [
+      {
+        speaker: "先生",
+        japanese: jp(p("みなさん、"), r("名前", "なまえ", "名字"), p("を"), r("書", "か", "写"), p("いてください。")),
+        meaning: "大家，请写名字。",
+        keywords: [{ term: "書いてください", reading: "かいてください", meaning: "请写" }],
+      },
+      {
+        speaker: "学生",
+        japanese: jp(p("はい。")),
+        meaning: "好的。",
+        keywords: [],
+      },
+      {
+        speaker: "先生",
+        japanese: jp(r("次", "つぎ", "下一个"), p("に、この"), r("文", "ぶん", "句子"), p("を"), r("読", "よ", "读"), p("んでください。")),
+        meaning: "接下来，请读这个句子。",
+        keywords: [{ term: "読んでください", reading: "よんでください", meaning: "请读" }],
+      },
+      {
+        speaker: "学生",
+        japanese: jp(p("すみません。もう"), r("一度", "いちど", "一次"), p(""), r("言", "い", "说"), p("ってください。")),
+        meaning: "不好意思，请再说一次。",
+        keywords: [{ term: "言ってください", reading: "いってください", meaning: "请说" }],
+      },
+      {
+        speaker: "先生",
+        japanese: jp(p("はい。"), r("少", "すこ", "少许"), p("し"), r("待", "ま", "等"), p("ってください。")),
+        meaning: "好的。请稍等。",
+        keywords: [{ term: "待ってください", reading: "まってください", meaning: "请等" }],
+      },
+    ],
+  },
+  exercises: [
+    { id: "u16-e1", type: "multiple-choice", prompt: jp(r("書", "か", "写"), p("きます 的て形是哪一个？")), options: [jp(r("書", "か", "写"), p("いて")), jp(r("書", "か", "写"), p("って")), jp(r("書", "か", "写"), p("んで")), jp(r("書", "か", "写"), p("きて"))], correctAnswer: jp(r("書", "か", "写"), p("いて")), explanation: jp(r("書", "か", "写"), p("きます → "), r("書", "か", "写"), p("いて。")) },
+    { id: "u16-e2", type: "fill-blank", prompt: jp(r("名前", "なまえ", "名字"), p("を"), r("書", "か", "写"), p("____ください。")), correctAnswer: "いて", explanation: jp(r("書", "か", "写"), p("いてください 表示请写。")) },
+    { id: "u16-e3", type: "multiple-choice", prompt: jp(r("読", "よ", "读"), p("みます 的て形是哪一个？")), options: [jp(r("読", "よ", "读"), p("んで")), jp(r("読", "よ", "读"), p("いて")), jp(r("読", "よ", "读"), p("って")), jp(r("読", "よ", "读"), p("みて"))], correctAnswer: jp(r("読", "よ", "读"), p("んで")), explanation: jp(r("読", "よ", "读"), p("みます → "), r("読", "よ", "读"), p("んで。")) },
+    { id: "u16-e4", type: "order-sentence", prompt: jp(p("排列成“请看照片”。")), parts: [r("写真", "しゃしん", "照片"), p("を"), r("見", "み", "看"), p("てください")], correctOrder: [r("写真", "しゃしん", "照片"), p("を"), r("見", "み", "看"), p("てください")], explanation: jp(r("見", "み", "看"), p("ます 的て形是 "), r("見", "み", "看"), p("て。")) },
+    { id: "u16-e5", type: "true-false", prompt: jp(p("判断用法。")), statement: jp(r("少", "すこ", "少许"), p("し"), r("待", "ま", "等"), p("ってください。表示“请稍等”。")), correctAnswer: true, explanation: jp(r("待", "ま", "等"), p("ってください 是常见请求。")) },
+    { id: "u16-e6", type: "matching", prompt: jp(p("匹配ます形和て形。")), pairs: [{ left: jp(r("食", "た", "吃"), p("べます")), right: "食べて" }, { left: jp(r("見", "み", "看"), p("ます")), right: "見て" }, { left: jp(r("行", "い", "去"), p("きます")), right: "行って" }, { left: jp(r("来", "き", "来"), p("ます")), right: "来て" }], explanation: jp(p("先把常见て形作为固定搭配记住。")) },
+    { id: "u16-e7", type: "fill-blank", prompt: jp(p("パンを"), r("食", "た", "吃"), p("べ____、"), r("水", "みず", "水"), p("を"), r("飲", "の", "喝"), p("みます。")), correctAnswer: "て", explanation: jp(r("食", "た", "吃"), p("べて 用来连接下一个动作。")) },
+    { id: "u16-e8", type: "multiple-choice", prompt: jp(p("哪一句表示“去图书馆，然后读书”？")), options: [jp(r("図書館", "としょかん", "图书馆"), p("へ"), r("行", "い", "去"), p("って、"), r("本", "ほん", "书"), p("を"), r("読", "よ", "读"), p("みます。")), jp(r("図書館", "としょかん", "图书馆"), p("へ"), r("行", "い", "去"), p("きます、"), r("本", "ほん", "书"), p("を"), r("読", "よ", "读"), p("んで。")), jp(r("図書館", "としょかん", "图书馆"), p("を"), r("読", "よ", "读"), p("んで、"), r("本", "ほん", "书"), p("へ"), r("行", "い", "去"), p("きます。")), jp(r("図書館", "としょかん", "图书馆"), p("へ"), r("見", "み", "看"), p("て、"), r("本", "ほん", "书"), p("を"), r("行", "い", "去"), p("きます。"))], correctAnswer: jp(r("図書館", "としょかん", "图书馆"), p("へ"), r("行", "い", "去"), p("って、"), r("本", "ほん", "书"), p("を"), r("読", "よ", "读"), p("みます。")), explanation: jp(r("行", "い", "去"), p("って 连接后面的动作。")) },
+    { id: "u16-e9", type: "true-false", prompt: jp(p("判断用法。")), statement: jp(p("て形可以连接两个简单动作。")), correctAnswer: true, explanation: jp(p("例如「食べて、飲みます」。")) },
+    { id: "u16-e10", type: "order-sentence", prompt: jp(p("排列成“请关窗”。")), parts: [r("窓", "まど", "窗户"), p("を"), r("閉", "し", "关闭"), p("めてください")], correctOrder: [r("窓", "まど", "窗户"), p("を"), r("閉", "し", "关闭"), p("めてください")], explanation: jp(r("閉", "し", "关闭"), p("めます 的て形是 "), r("閉", "し", "关闭"), p("めて。")) },
+    { id: "u16-e11", type: "fill-blank", prompt: jp(r("教室", "きょうしつ", "教室"), p("へ"), r("来", "き", "来"), p("____ください。")), correctAnswer: "て", explanation: jp(r("来", "き", "来"), p("ます 的て形是 "), r("来", "き", "来"), p("て。")) },
+    { id: "u16-e12", type: "multiple-choice", prompt: jp(p("哪一个是「します」的て形？")), options: ["して", "しますて", "しって", "しんで"], correctAnswer: "して", explanation: jp(p("します → して。")) },
+  ],
+};

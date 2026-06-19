@@ -71,7 +71,7 @@ https://<USERNAME>.github.io/nihongo-studio/
 
 ## 内容说明
 
-v1.2 内置 11 个原创基础单元：
+v1.3 内置 17 个原创基础单元：
 
 1. Unit 0：假名与日语发音基础
 2. Unit 1：A は B です
@@ -84,6 +84,12 @@ v1.2 内置 11 个原创基础单元：
 9. Unit 8：好き・嫌い・上手・下手
 10. Unit 9：あります / います
 11. Unit 10：てください / ましょう
+12. Unit 11：名词句与形容词句的过去表达
+13. Unit 12：动词过去表达
+14. Unit 13：数字、价格与数量
+15. Unit 14：日期、星期与日程
+16. Unit 15：たいです
+17. Unit 16：て形入门
 
 课程中的单词编排、语法说明、例句、对话与练习均为本项目原创示例内容，没有复制《新标准日本语》或其他教材的课文、练习、单词表、录音、插图或版式。
 
@@ -218,7 +224,7 @@ type JapaneseTextSegment = {
 ]
 ```
 
-带 `reading` 或 `meaning` 的片段可以悬停或聚焦查看简短词语信息。当前 Unit 0 到 Unit 10 均支持 furigana；旧课程读音来自 `src/content/furigana.ts` 中手工维护的课程读音表，新课程优先直接使用 `JapaneseTextSegment[]` 写入读音。不接入在线词典，也不自动推断未知读音。
+带 `reading` 或 `meaning` 的片段可以悬停或聚焦查看简短词语信息。当前 Unit 0 到 Unit 16 均支持 furigana；旧课程读音来自 `src/content/furigana.ts` 中手工维护的课程读音表，新课程优先直接使用 `JapaneseTextSegment[]` 写入读音。不接入在线词典，也不自动推断未知读音。
 
 ## 导入与导出
 

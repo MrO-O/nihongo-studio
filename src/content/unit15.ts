@@ -1,0 +1,131 @@
+import type { Lesson } from "../types";
+import { jp, p, r } from "./text";
+
+export const unit15: Lesson = {
+  id: "unit-15",
+  unit: 15,
+  title: "たいです",
+  subtitle: "表达想做某事",
+  description:
+    "学习「动词ます形去ます + たいです」，表达想吃、想看、想去、想买等简单愿望。",
+  duration: "约 50 分钟",
+  accent: "#b86f83",
+  goals: [
+    "用「たいです」表达自己的愿望",
+    "理解「を」和「が」在たい句中的基础用法",
+    "用「たくありません」表达不想做某事",
+  ],
+  vocabulary: [
+    { id: "u15-w1", japanese: jp(r("食", "た", "吃"), p("べたいです")), kana: "たべたいです", meaning: "想吃", partOfSpeech: "表达", example: jp(p("すしを"), r("食", "た", "吃"), p("べたいです。")), exampleMeaning: "想吃寿司。" },
+    { id: "u15-w2", japanese: jp(r("飲", "の", "喝"), p("みたいです")), kana: "のみたいです", meaning: "想喝", partOfSpeech: "表达", example: jp(r("水", "みず", "水"), p("を"), r("飲", "の", "喝"), p("みたいです。")), exampleMeaning: "想喝水。" },
+    { id: "u15-w3", japanese: jp(r("見", "み", "看"), p("たいです")), kana: "みたいです", meaning: "想看", partOfSpeech: "表达", example: jp(r("映画", "えいが", "电影"), p("を"), r("見", "み", "看"), p("たいです。")), exampleMeaning: "想看电影。" },
+    { id: "u15-w4", japanese: jp(r("行", "い", "去"), p("きたいです")), kana: "いきたいです", meaning: "想去", partOfSpeech: "表达", example: jp(r("京都", "きょうと", "京都"), p("へ"), r("行", "い", "去"), p("きたいです。")), exampleMeaning: "想去京都。" },
+    { id: "u15-w5", japanese: jp(r("買", "か", "买"), p("いたいです")), kana: "かいたいです", meaning: "想买", partOfSpeech: "表达", example: jp(r("新", "あたら", "新的"), p("しいペンを"), r("買", "か", "买"), p("いたいです。")), exampleMeaning: "想买新笔。" },
+    { id: "u15-w6", japanese: jp(r("勉強", "べんきょう", "学习"), p("したいです")), kana: "べんきょうしたいです", meaning: "想学习", partOfSpeech: "表达", example: jp(r("日本語", "にほんご", "日语"), p("をもっと"), r("勉強", "べんきょう", "学习"), p("したいです。")), exampleMeaning: "想更多地学习日语。" },
+    { id: "u15-w7", japanese: jp(r("休", "やす", "休息"), p("みたいです")), kana: "やすみたいです", meaning: "想休息", partOfSpeech: "表达", example: jp(r("今日", "きょう", "今天"), p("は"), r("休", "やす", "休息"), p("みたいです。")), exampleMeaning: "今天想休息。" },
+    { id: "u15-w8", japanese: jp(r("映画", "えいが", "电影")), kana: "えいが", meaning: "电影", partOfSpeech: "名词", example: jp(r("映画", "えいが", "电影"), p("を"), r("見", "み", "看"), p("たいです。")), exampleMeaning: "想看电影。" },
+    { id: "u15-w9", japanese: jp(r("旅行", "りょこう", "旅行")), kana: "りょこう", meaning: "旅行", partOfSpeech: "名词", example: jp(r("旅行", "りょこう", "旅行"), p("に"), r("行", "い", "去"), p("きたいです。")), exampleMeaning: "想去旅行。" },
+    { id: "u15-w10", japanese: jp(r("水", "みず", "水")), kana: "みず", meaning: "水", partOfSpeech: "名词", example: jp(r("水", "みず", "水"), p("が"), r("飲", "の", "喝"), p("みたいです。")), exampleMeaning: "想喝水。" },
+    { id: "u15-w11", japanese: jp(r("新", "あたら", "新的"), p("しい")), kana: "あたらしい", meaning: "新的", partOfSpeech: "い形容词", example: jp(r("新", "あたら", "新的"), p("しいノートを"), r("買", "か", "买"), p("いたいです。")), exampleMeaning: "想买新笔记本。" },
+    { id: "u15-w12", japanese: jp(r("何", "なに", "什么")), kana: "なに", meaning: "什么", partOfSpeech: "疑问词", example: jp(r("何", "なに", "什么"), p("を"), r("食", "た", "吃"), p("べたいですか。")), exampleMeaning: "想吃什么？" },
+  ],
+  grammar: [
+    {
+      id: "u15-g1",
+      title: "动词たいです",
+      structure: jp(r("食", "た", "吃"), p("べます → "), r("食", "た", "吃"), p("べたいです")),
+      explanation: "把动词的「ます」去掉，加「たいです」，表示“想做”。",
+      usage: "主要表达说话人自己的愿望。",
+      examples: [
+        { japanese: jp(p("すしを"), r("食", "た", "吃"), p("べたいです。")), meaning: "想吃寿司。" },
+        { japanese: jp(r("京都", "きょうと", "京都"), p("へ"), r("行", "い", "去"), p("きたいです。")), meaning: "想去京都。" },
+      ],
+    },
+    {
+      id: "u15-g2",
+      title: "を / が",
+      structure: jp(r("映画", "えいが", "电影"), p("を / が"), r("見", "み", "看"), p("たいです")),
+      explanation: "たい句里对象可以用「を」，也常用「が」。入门阶段先理解两者都能表达对象。",
+      usage: "练习时保持一个句子一个对象，避免复杂对比。",
+      examples: [
+        { japanese: jp(r("映画", "えいが", "电影"), p("を"), r("見", "み", "看"), p("たいです。")), meaning: "想看电影。" },
+        { japanese: jp(r("水", "みず", "水"), p("が"), r("飲", "の", "喝"), p("みたいです。")), meaning: "想喝水。" },
+      ],
+    },
+    {
+      id: "u15-g3",
+      title: "たくありません",
+      structure: jp(r("食", "た", "吃"), p("べたいです → "), r("食", "た", "吃"), p("べたくありません")),
+      explanation: "「たい」像い形容词一样变化，否定是「たくありません」。",
+      usage: "用于礼貌地说“不想做”。",
+      examples: [
+        { japanese: jp(r("今日", "きょう", "今天"), p("は"), r("出", "で", "出去"), p("かけたくありません。")), meaning: "今天不想出门。" },
+        { japanese: jp(r("今", "いま", "现在"), p("はコーヒーを"), r("飲", "の", "喝"), p("みたくありません。")), meaning: "现在不想喝咖啡。" },
+      ],
+    },
+  ],
+  examples: [
+    { japanese: jp(p("すしを"), r("食", "た", "吃"), p("べたいです。")), meaning: "想吃寿司。" },
+    { japanese: jp(r("映画", "えいが", "电影"), p("を"), r("見", "み", "看"), p("たいです。")), meaning: "想看电影。" },
+    { japanese: jp(r("京都", "きょうと", "京都"), p("へ"), r("行", "い", "去"), p("きたいです。")), meaning: "想去京都。" },
+    { japanese: jp(r("水", "みず", "水"), p("が"), r("飲", "の", "喝"), p("みたいです。")), meaning: "想喝水。" },
+    { japanese: jp(r("新", "あたら", "新的"), p("しいノートを"), r("買", "か", "买"), p("いたいです。")), meaning: "想买新笔记本。" },
+    { japanese: jp(r("今日", "きょう", "今天"), p("は"), r("休", "やす", "休息"), p("みたいです。")), meaning: "今天想休息。" },
+  ],
+  reading: {
+    title: "週末にしたいこと",
+    intro: "两个同学聊周末想做的事。",
+    lines: [
+      {
+        speaker: "周",
+        japanese: jp(r("週末", "しゅうまつ", "周末"), p("、"), r("何", "なに", "什么"), p("をしたいですか。")),
+        meaning: "周末想做什么？",
+        keywords: [{ term: "したいです", reading: "したいです", meaning: "想做" }],
+      },
+      {
+        speaker: "森",
+        japanese: jp(r("映画", "えいが", "电影"), p("を"), r("見", "み", "看"), p("たいです。")),
+        meaning: "想看电影。",
+        keywords: [{ term: "見たいです", reading: "みたいです", meaning: "想看" }],
+      },
+      {
+        speaker: "周",
+        japanese: jp(p("いいですね。わたしは"), r("旅行", "りょこう", "旅行"), p("に"), r("行", "い", "去"), p("きたいです。")),
+        meaning: "不错。我想去旅行。",
+        keywords: [{ term: "行きたいです", reading: "いきたいです", meaning: "想去" }],
+      },
+      {
+        speaker: "森",
+        japanese: jp(p("どこへ"), r("行", "い", "去"), p("きたいですか。")),
+        meaning: "想去哪里？",
+        keywords: [],
+      },
+      {
+        speaker: "周",
+        japanese: jp(r("京都", "きょうと", "京都"), p("へ"), r("行", "い", "去"), p("きたいです。"), r("古", "ふる", "古老"), p("い"), r("町", "まち", "街道"), p("を"), r("見", "み", "看"), p("たいです。")),
+        meaning: "想去京都。想看看古老的街道。",
+        keywords: [{ term: "見たいです", reading: "みたいです", meaning: "想看" }],
+      },
+      {
+        speaker: "森",
+        japanese: jp(p("わたしも"), r("行", "い", "去"), p("きたいです。")),
+        meaning: "我也想去。",
+        keywords: [],
+      },
+    ],
+  },
+  exercises: [
+    { id: "u15-e1", type: "multiple-choice", prompt: jp(r("食", "た", "吃"), p("べます 的「想吃」是哪一个？")), options: [jp(r("食", "た", "吃"), p("べたいです")), jp(r("食", "た", "吃"), p("べました")), jp(r("食", "た", "吃"), p("べますたい")), jp(r("食", "た", "吃"), p("べませんでした"))], correctAnswer: jp(r("食", "た", "吃"), p("べたいです")), explanation: jp(p("去掉「ます」，加「たいです」。")) },
+    { id: "u15-e2", type: "fill-blank", prompt: jp(r("映画", "えいが", "电影"), p("を"), r("見", "み", "看"), p("____。")), correctAnswer: "たいです", explanation: jp(r("見", "み", "看"), p("ます → "), r("見", "み", "看"), p("たいです。")) },
+    { id: "u15-e3", type: "order-sentence", prompt: jp(p("排列成“想去京都”。")), parts: [r("京都", "きょうと", "京都"), p("へ"), r("行", "い", "去"), p("きたいです")], correctOrder: [r("京都", "きょうと", "京都"), p("へ"), r("行", "い", "去"), p("きたいです")], explanation: jp(r("行", "い", "去"), p("きます → "), r("行", "い", "去"), p("きたいです。")) },
+    { id: "u15-e4", type: "true-false", prompt: jp(p("判断用法。")), statement: jp(r("水", "みず", "水"), p("が"), r("飲", "の", "喝"), p("みたいです。可以表示“想喝水”。")), correctAnswer: true, explanation: jp(p("たい句里对象可以用「が」。")) },
+    { id: "u15-e5", type: "matching", prompt: jp(p("匹配表达和意思。")), pairs: [{ left: jp(r("見", "み", "看"), p("たいです")), right: "想看" }, { left: jp(r("買", "か", "买"), p("いたいです")), right: "想买" }, { left: jp(r("飲", "の", "喝"), p("みたいです")), right: "想喝" }, { left: jp(r("休", "やす", "休息"), p("みたいです")), right: "想休息" }], explanation: jp(p("这些都是「たいです」表达。")) },
+    { id: "u15-e6", type: "multiple-choice", prompt: jp(p("哪一句表示“想买新笔记本”？")), options: [jp(r("新", "あたら", "新的"), p("しいノートを"), r("買", "か", "买"), p("いたいです。")), jp(r("新", "あたら", "新的"), p("しいノートを"), r("買", "か", "买"), p("いました。")), jp(r("新", "あたら", "新的"), p("しいノートへ"), r("行", "い", "去"), p("きたいです。")), jp(r("新", "あたら", "新的"), p("しいノートを"), r("見", "み", "看"), p("たいです。"))], correctAnswer: jp(r("新", "あたら", "新的"), p("しいノートを"), r("買", "か", "买"), p("いたいです。")), explanation: jp(r("買", "か", "买"), p("いたいです 表示想买。")) },
+    { id: "u15-e7", type: "fill-blank", prompt: jp(r("今日", "きょう", "今天"), p("は"), r("休", "やす", "休息"), p("み____。")), correctAnswer: "たいです", explanation: jp(r("休", "やす", "休息"), p("みたいです 表示想休息。")) },
+    { id: "u15-e8", type: "true-false", prompt: jp(p("判断用法。")), statement: jp(p("「"), r("飲", "の", "喝"), p("みたくありません」表示“不想喝”。")), correctAnswer: true, explanation: jp(p("たい 的否定是「たくありません」。")) },
+    { id: "u15-e9", type: "order-sentence", prompt: jp(p("排列成“想更多地学习日语”。")), parts: [r("日本語", "にほんご", "日语"), p("をもっと"), r("勉強", "べんきょう", "学习"), p("したいです")], correctOrder: [r("日本語", "にほんご", "日语"), p("をもっと"), r("勉強", "べんきょう", "学习"), p("したいです")], explanation: jp(r("勉強", "べんきょう", "学习"), p("します → "), r("勉強", "べんきょう", "学习"), p("したいです。")) },
+    { id: "u15-e10", type: "multiple-choice", prompt: jp(r("何", "なに", "什么"), p("を"), r("食", "た", "吃"), p("べたいですか。是什么意思？")), options: ["想吃什么？", "吃了什么？", "什么时候吃？", "不想吃什么？"], correctAnswer: "想吃什么？", explanation: jp(r("何", "なに", "什么"), p("を + たいですか 用来询问想做的对象。")) },
+    { id: "u15-e11", type: "fill-blank", prompt: jp(r("今", "いま", "现在"), p("はコーヒーを"), r("飲", "の", "喝"), p("みたく____。")), correctAnswer: "ありません", explanation: jp(r("飲", "の", "喝"), p("みたくありません 表示不想喝。")) },
+    { id: "u15-e12", type: "multiple-choice", prompt: jp(p("哪一句最自然地表示“想去旅行”？")), options: [jp(r("旅行", "りょこう", "旅行"), p("に"), r("行", "い", "去"), p("きたいです。")), jp(r("旅行", "りょこう", "旅行"), p("を"), r("食", "た", "吃"), p("べたいです。")), jp(r("旅行", "りょこう", "旅行"), p("が"), r("飲", "の", "喝"), p("みたいです。")), jp(r("旅行", "りょこう", "旅行"), p("へ"), r("買", "か", "买"), p("いたいです。"))], correctAnswer: jp(r("旅行", "りょこう", "旅行"), p("に"), r("行", "い", "去"), p("きたいです。")), explanation: jp(r("旅行", "りょこう", "旅行"), p("に"), r("行", "い", "去"), p("きたいです 表示想去旅行。")) },
+  ],
+};
