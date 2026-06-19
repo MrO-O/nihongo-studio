@@ -13,10 +13,10 @@ import {
   subscribeToAuthState,
   uploadCloudLearningState,
 } from "../services/cloudSync";
-import { isFirebaseConfigured } from "../services/firebase";
+import { cleanViteEnv, isFirebaseConfigured } from "../services/firebase";
 import { mergeLearningStates } from "../services/learningMerge";
 
-const isSignupEnabled = import.meta.env.VITE_ENABLE_SIGNUP === "true";
+const isSignupEnabled = cleanViteEnv(import.meta.env.VITE_ENABLE_SIGNUP) === "true";
 
 function formatDateTime(value: string | null) {
   if (!value) return "尚未记录";

@@ -172,6 +172,8 @@ VITE_ENABLE_SIGNUP
 
 项目的 Pages workflow 会在构建时把这些 secrets 注入给 Vite。修改 secrets 后，需要重新运行部署 workflow，或推送一次新提交触发部署。
 
+`VITE_FIREBASE_API_KEY` 应来自 Firebase Console -> Project settings -> General -> Your apps -> Firebase SDK snippet 中的 `apiKey` 字段。填入 GitHub secrets 时只填值本身，不要包含单引号、双引号、逗号、字段名前缀或多余空格。例如填写 `AIza...`，不要填写 `"AIza..."` 或 `apiKey: "AIza..."`。如果页面提示 `auth/api-key-not-valid`，通常说明这个 secret 值不是有效的 Firebase Web API key，或修改 secret 后还没有重新部署成功。
+
 Firebase Web config 不是 Admin 密钥，但 Firestore Security Rules 必须正确设置。推荐规则见 [docs/firebase-security-rules.md](docs/firebase-security-rules.md)，需要在 Firebase Console 中手动部署。如果没有正确规则，不能认为同步是安全的。
 
 个人自用部署建议把 Firestore Rules 改成 UID 白名单，只允许你的 Firebase Auth UID 访问自己的 `userStates/{uid}`。同一个人换新设备时，只需要登录同一个账号，仍然使用同一个 UID，不需要创建新 UID。

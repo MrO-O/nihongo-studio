@@ -145,6 +145,9 @@ export function getFriendlyFirebaseError(error: unknown) {
       return "密码强度太弱，请至少使用 6 位字符。";
     case "auth/invalid-email":
       return "邮箱格式看起来不正确。";
+    case "auth/api-key-not-valid.-please-pass-a-valid-api-key.":
+    case "auth/invalid-api-key":
+      return "Firebase API key 无效。请检查 GitHub Actions secret 中的 VITE_FIREBASE_API_KEY 是否为 Firebase Web App 配置里的 apiKey，且不要包含引号、逗号或多余空格。修改后需要重新部署。";
     case "permission-denied":
     case "firestore/permission-denied":
       return "Firestore 权限被拒绝。请检查 Firebase Security Rules 是否已正确部署。";
