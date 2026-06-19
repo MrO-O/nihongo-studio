@@ -6,6 +6,21 @@ import type {
 } from "../types";
 
 const STORAGE_KEY = "nihongo-studio-learning-data";
+const METADATA_KEY = "nihongo-studio-learning-metadata";
+
+export interface LearningMetadata {
+  localUpdatedAt: string | null;
+  hasLocalChanges: boolean;
+  lastCloudUpdatedAt: string | null;
+  lastSyncedAt: string | null;
+}
+
+const initialLearningMetadata: LearningMetadata = {
+  localUpdatedAt: null,
+  hasLocalChanges: false,
+  lastCloudUpdatedAt: null,
+  lastSyncedAt: null,
+};
 
 export const initialLearningState: LearningState = {
   version: 1,
@@ -104,8 +119,34 @@ function loadState(): LearningState {
   }
 }
 
+function loadMetadata(): LearningMetadata {
+  try {
+    const raw = localStorage.getItem(METADATA_KEY);
+    if (!raw) return initialLearningMetadata;
+    const value = JSON.parse(raw);
+    if (!isObject(value)) return initialLearningMetadata;
+
+    return {
+      localUpdatedAt:
+        typeof value.localUpdatedAt === "string" ? value.localUpdatedAt : null,
+      hasLocalChanges:
+        typeof value.hasLocalChanges === "boolean"
+          ? value.hasLocalChanges
+          : false,
+      lastCloudUpdatedAt:
+        typeof value.lastCloudUpdatedAt === "string"
+          ? value.lastCloudUpdatedAt
+          : null,
+      lastSyncedAt: typeof value.lastSyncedAt === "string" ? value.lastSyncedAt : null,
+    };
+  } catch {
+    return initialLearningMetadata;
+  }
+}
+
 export function useLearningStore() {
   const [state, setState] = useState<LearningState>(loadState);
+  const [metadata, setMetadata] = useState<LearningMetadata>(loadMetadata);
 
   useEffect(() => {
     try {
@@ -115,9 +156,37 @@ export function useLearningStore() {
     }
   }, [state]);
 
+  useEffect(() => {
+    try {
+      localStorage.setItem(METADATA_KEY, JSON.stringify(metadata));
+    } catch {
+      // Sync metadata is helpful but not required for local learning.
+    }
+  }, [metadata]);
+
+  const updateState = useCallback(
+    (
+      updater: LearningState | ((current: LearningState) => LearningState),
+      options: { markDirty?: boolean } = {},
+    ) => {
+      const markDirty = options.markDirty ?? true;
+      const updatedAt = new Date().toISOString();
+
+      setState((current) => {
+        return typeof updater === "function" ? updater(current) : updater;
+      });
+      setMetadata((currentMetadata) => ({
+        ...currentMetadata,
+        localUpdatedAt: updatedAt,
+        hasLocalChanges: markDirty ? true : currentMetadata.hasLocalChanges,
+      }));
+    },
+    [],
+  );
+
   const recordExercise = useCallback(
     (lessonId: string, exerciseId: string, correct: boolean, answer: unknown) => {
-      setState((current) => {
+      updateState((current) => {
         const previousStats = current.lessonStats[lessonId] ?? {
           correct: 0,
           total: 0,
@@ -155,86 +224,111 @@ export function useLearningStore() {
         };
       });
     },
-    [],
+    [updateState],
   );
 
   const completeLesson = useCallback((lessonId: string) => {
-    setState((current) => ({
+    updateState((current) => ({
       ...current,
       lastLessonId: lessonId,
       completedLessonIds: current.completedLessonIds.includes(lessonId)
         ? current.completedLessonIds
         : [...current.completedLessonIds, lessonId],
     }));
-  }, []);
+  }, [updateState]);
 
   const setLastLesson = useCallback((lessonId: string) => {
-    setState((current) => ({ ...current, lastLessonId: lessonId }));
-  }, []);
+    updateState((current) => ({ ...current, lastLessonId: lessonId }));
+  }, [updateState]);
 
   const setWordStatus = useCallback((wordId: string, status?: WordStatus) => {
-    setState((current) => {
+    updateState((current) => {
       const vocabularyStatus = { ...current.vocabularyStatus };
       if (status) vocabularyStatus[wordId] = status;
       else delete vocabularyStatus[wordId];
       return { ...current, vocabularyStatus };
     });
-  }, []);
+  }, [updateState]);
 
   const toggleFavorite = useCallback((wordId: string) => {
-    setState((current) => ({
+    updateState((current) => ({
       ...current,
       favoriteWordIds: current.favoriteWordIds.includes(wordId)
         ? current.favoriteWordIds.filter((id) => id !== wordId)
         : [...current.favoriteWordIds, wordId],
     }));
-  }, []);
+  }, [updateState]);
 
   const recordKanaAnswer = useCallback((correct: boolean) => {
-    setState((current) => ({
+    updateState((current) => ({
       ...current,
       kanaStats: {
         correct: current.kanaStats.correct + (correct ? 1 : 0),
         total: current.kanaStats.total + 1,
       },
     }));
-  }, []);
+  }, [updateState]);
 
   const setShowFurigana = useCallback((showFurigana: boolean) => {
-    setState((current) => ({ ...current, showFurigana }));
-  }, []);
+    updateState((current) => ({ ...current, showFurigana }));
+  }, [updateState]);
 
   const removeWrongAnswer = useCallback((exerciseId: string) => {
-    setState((current) => ({
+    updateState((current) => ({
       ...current,
       wrongAnswers: current.wrongAnswers.filter(
         (item) => item.exerciseId !== exerciseId,
       ),
     }));
-  }, []);
+  }, [updateState]);
 
   const clearWrongAnswers = useCallback(() => {
-    setState((current) => ({ ...current, wrongAnswers: [] }));
+    updateState((current) => ({ ...current, wrongAnswers: [] }));
+  }, [updateState]);
+
+  const reset = useCallback(() => updateState(initialLearningState), [updateState]);
+
+  const replaceState = useCallback(
+    (nextState: LearningState, options: { markDirty?: boolean } = {}) => {
+      updateState(nextState, options);
+    },
+    [updateState],
+  );
+
+  const markCloudSynced = useCallback((cloudUpdatedAt: string | null) => {
+    const syncedAt = new Date().toISOString();
+    setMetadata((current) => ({
+      ...current,
+      hasLocalChanges: false,
+      lastCloudUpdatedAt: cloudUpdatedAt,
+      lastSyncedAt: syncedAt,
+    }));
   }, []);
 
-  const reset = useCallback(() => setState(initialLearningState), []);
+  const noteCloudSnapshot = useCallback((cloudUpdatedAt: string | null) => {
+    setMetadata((current) => ({
+      ...current,
+      lastCloudUpdatedAt: cloudUpdatedAt,
+    }));
+  }, []);
 
   const importData = useCallback((raw: string) => {
     try {
       const normalized = normalizeLearningState(JSON.parse(raw));
       if (!normalized) return false;
-      setState(normalized);
+      updateState(normalized);
       return true;
     } catch {
       return false;
     }
-  }, []);
+  }, [updateState]);
 
   const exportData = useCallback(() => JSON.stringify(state, null, 2), [state]);
 
   return useMemo(
     () => ({
       state,
+      metadata,
       recordExercise,
       completeLesson,
       setLastLesson,
@@ -247,9 +341,13 @@ export function useLearningStore() {
       reset,
       importData,
       exportData,
+      replaceState,
+      markCloudSynced,
+      noteCloudSnapshot,
     }),
     [
       state,
+      metadata,
       recordExercise,
       completeLesson,
       setLastLesson,
@@ -262,6 +360,9 @@ export function useLearningStore() {
       reset,
       importData,
       exportData,
+      replaceState,
+      markCloudSynced,
+      noteCloudSnapshot,
     ],
   );
 }

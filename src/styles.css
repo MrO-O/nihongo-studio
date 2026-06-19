@@ -2433,6 +2433,90 @@ svg {
   line-height: 1.7;
 }
 
+.cloud-sync-card {
+  grid-column: 1 / -1;
+  min-height: 0;
+}
+
+.sync-status-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.sync-status-grid div {
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper);
+}
+
+.sync-status-grid span,
+.sync-status-grid strong {
+  display: block;
+}
+
+.sync-status-grid span {
+  color: var(--muted);
+  font-size: 8px;
+}
+
+.sync-status-grid strong {
+  overflow-wrap: anywhere;
+  margin-top: 5px;
+  color: var(--deep-green);
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.sync-warning {
+  margin-bottom: 16px;
+  padding: 11px 13px;
+  border: 1px solid #e2c78e;
+  border-radius: 10px;
+  background: var(--soft-gold);
+  color: #775928;
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.sync-login-form {
+  display: grid;
+  gap: 12px;
+}
+
+.sync-login-form label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.sync-login-form input {
+  width: min(100%, 360px);
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  outline: none;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 12px;
+}
+
+.sync-login-form input:focus {
+  border-color: var(--deep-green);
+  box-shadow: 0 0 0 3px rgba(36, 76, 67, 0.08);
+}
+
+.sync-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
 .data-summary {
   display: flex;
   flex-wrap: wrap;
@@ -2907,6 +2991,10 @@ svg {
   }
 
   .settings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sync-status-grid {
     grid-template-columns: 1fr;
   }
 
